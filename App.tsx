@@ -3,7 +3,8 @@ import {
   Text,
   SafeAreaView,
   StyleSheet,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native'
 import PokemonCard from './components/PokemonCard';
 
@@ -45,10 +46,12 @@ const App = () => {
   };
   return (
   <SafeAreaView style={styles.container}>
+    <ScrollView>
     <PokemonCard {...charmanderData} />
     <PokemonCard {...squirtleData} />
     <PokemonCard {...bulbasaurData} />
     <PokemonCard {...pikachuData} />
+    </ScrollView>
   </SafeAreaView> 
   )
 }
