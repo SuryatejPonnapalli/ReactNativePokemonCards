@@ -1,118 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
-} from 'react-native';
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  Platform
+} from 'react-native'
+import PokemonCard from './components/PokemonCard';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+const App = () => {
+  const charmanderData = {
+    name: "Charmander",
+    image: require("./assests/charmander.png"),
+    type: "Fire",
+    hp: 39,
+    moves: ["Scratch", "Ember", "Growl", "Leer"],
+    weaknesses: ["Water", "Rock"],
   };
 
+  const squirtleData = {
+    name: "Squirtle",
+    image: require("./assests/squirtle.png"), 
+    type: "Water",
+    hp: 44,
+    moves: ["Tackle", "Water Gun", "Tail Whip", "Withdraw"],
+    weaknesses: ["Electric", "Grass"],
+  };
+
+  const bulbasaurData = {
+    name: "Bulbasaur",
+    image: require("./assests/bulbasaur.png"), 
+    type: "Grass",
+    hp: 45,
+    moves: ["Tackle", "Vine Whip", "Growl", "Leech Seed"],
+    weaknesses: ["Fire", "Ice", "Flying", "Psychic"],
+  };
+
+  const pikachuData = {
+    name: "Pikachu",
+    image: require("./assests/pikachu.png"), 
+    type: "Electric",
+    hp: 35,
+    moves: ["Quick Attack", "Thunderbolt", "Tail Whip", "Growl"],
+    weaknesses: ["Ground"],
+  };
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  <SafeAreaView style={styles.container}>
+    <PokemonCard {...charmanderData} />
+    <PokemonCard {...squirtleData} />
+    <PokemonCard {...bulbasaurData} />
+    <PokemonCard {...pikachuData} />
+  </SafeAreaView> 
+  )
 }
-
+ 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  container:{
+    flex:1,
+    backgroundColor: 'f5f5f5',
+    paddingTop: Platform.OS === 'android'? 25 : 0,
+  }
 });
-
 export default App;
